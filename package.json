@@ -9,10 +9,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "cesium": "^1.81.0",
-    "core-js": "^3.6.5",
-    "three": "^0.87.1",
-    "vue": "^2.6.11"
+    "cesium": "1.81.0",
+    "core-js": "3.6.5",
+    "three": "0.87.1",
+    "vue": "2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
