@@ -1,24 +1,5 @@
 # cesium-with-threejs
 
-## Project setup
-```
-npm install
-```
+将Cesium与ThreeJs集成的样例。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+参考并修改自[cesium-threejs-experiment](https://github.com/CesiumGS/cesium-threejs-experiment)

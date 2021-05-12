@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "gulp postInstall",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "cesium": "^1.81.0",
     "core-js": "^3.6.5",
+    "three": "^0.87.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -17,16 +20,21 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
+    "bluebird": "^3.7.2",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "fs-extra": "^10.0.0",
+    "gulp": "^4.0.2",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
-    "vue-template-compiler": "^2.6.11"
+    "url-loader": "^4.1.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-glsl-loader": "^1.0.1"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
