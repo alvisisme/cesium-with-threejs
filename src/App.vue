@@ -12,20 +12,44 @@
 </template>
 
 <script>
-import * as Cesium from '@/thirdparty/Cesium/Cesium.js'
-import * as THREE from '@/thirdparty/Three/Three.js'
+// import * as Cesium from '@/thirdparty/Cesium/Cesium.js'
+// import * as THREE from '@/thirdparty/Three/Three.js'
+import {
+  Cartesian3 as CesiumCartesian3,
+  Viewer as CesiumViewer,
+  ShadowMode as CesiumShadowMode,
+  Color as CesiumColor,
+  Math as CesiumMath,
+  TileMapServiceImageryProvider as CesiumTileMapServiceImageryProvider,
+  buildModuleUrl as CesiumBuildModuleUrl
+} from '@/thirdparty/Cesium/Cesium.js'
+// 使用到的 ThreeJs模块
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  Vector2,
+  Vector3,
+  MeshNormalMaterial,
+  LatheGeometry,
+  Mesh,
+  Group,
+  DoubleSide,
+  AxisHelper
+} from '@/thirdparty/Three/Three.js'
 
 export default {
   name: 'App',
   mounted() {
     function main() {
-      console.log('Cesium: v' + Cesium.VERSION)
-
-      var CesiumCartesian3 = Cesium.Cartesian3
-      var CesiumViewer = Cesium.Viewer
-      var CesiumShadowMode = Cesium.ShadowMode
-      var CesiumColor = Cesium.Color
-      var CesiumMath = Cesium.Math
+      // Cesium 相关模块
+      // var CesiumCartesian3 = Cesium.Cartesian3
+      // var CesiumViewer = Cesium.Viewer
+      // var CesiumShadowMode = Cesium.ShadowMode
+      // var CesiumColor = Cesium.Color
+      // var CesiumMath = Cesium.Math
+      // var CesiumTileMapServiceImageryProvider = Cesium.TileMapServiceImageryProvider
+      // var CesiumBuildModuleUrl = Cesium.buildModuleUrl
 
       var loadingIndicator = document.getElementById('loadingIndicator')
       loadingIndicator.style.display = 'none'
@@ -83,8 +107,8 @@ export default {
           resolutionScale: 0.1,
           orderIndependentTranslucency: true,
           // imageryProvider: null,
-          imageryProvider: new Cesium.TileMapServiceImageryProvider({
-            url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII') // 离线模式的图层
+          imageryProvider: new CesiumTileMapServiceImageryProvider({
+            url: CesiumBuildModuleUrl('Assets/Textures/NaturalEarthII') // 离线模式的图层
           }),
           baseLayerPicker: false,
           geocoder: false,
@@ -118,12 +142,12 @@ export default {
         var near = 1
         var far = 10 * 1000 * 1000
 
-        three.scene = new THREE.Scene()
-        three.camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-        three.renderer = new THREE.WebGLRenderer({ alpha: true })
+        three.scene = new Scene()
+        three.camera = new PerspectiveCamera(fov, aspect, near, far)
+        three.renderer = new WebGLRenderer({ alpha: true })
         ThreeContainer.appendChild(three.renderer.domElement)
 
-        const AxesHelper = new THREE.AxisHelper(3000000000000)
+        const AxesHelper = new AxisHelper(3000000000000)
         three.scene.add(AxesHelper)
       }
 
@@ -149,18 +173,18 @@ export default {
 
         // Three.js Objects
         // Lathe geometry
-        var doubleSideMaterial = new THREE.MeshNormalMaterial({
-          side: THREE.DoubleSide
+        var doubleSideMaterial = new MeshNormalMaterial({
+          side: DoubleSide
         })
         var segments = 10
         var points = []
         for (var i = 0; i < segments; i++) {
           points.push(
-            new THREE.Vector2(Math.sin(i * 0.2) * segments + 5, (i - 5) * 2)
+            new Vector2(Math.sin(i * 0.2) * segments + 5, (i - 5) * 2)
           )
         }
-        var geometry = new THREE.LatheGeometry(points)
-        var latheMesh = new THREE.Mesh(geometry, doubleSideMaterial)
+        var geometry = new LatheGeometry(points)
+        var latheMesh = new Mesh(geometry, doubleSideMaterial)
         const scaleSize = 1500
         latheMesh.scale.set(scaleSize, scaleSize, scaleSize) // 放大物体，不然可能在地球表面看不见
 
@@ -185,7 +209,7 @@ export default {
         latheMesh.position.z += up //  translate "up" in Three.js space so the "bottom" of the mesh is the handle
         latheMesh.rotation.x = Math.PI / 2 // rotate mesh for Cesium's Y-up system
 
-        const latheMeshYup = new THREE.Group()
+        const latheMeshYup = new Group()
         latheMeshYup.add(latheMesh)
         three.scene.add(latheMeshYup) // don’t forget to add it to the Three.js scene manually
 
@@ -210,7 +234,7 @@ export default {
         three.camera.updateProjectionMatrix()
 
         var cartToVec = function(cart) {
-          return new THREE.Vector3(cart.x, cart.y, cart.z)
+          return new Vector3(cart.x, cart.y, cart.z)
         }
 
         // Configure Three.js meshes to stand against globe center position up direction
@@ -237,7 +261,7 @@ export default {
           var topLeft = cartToVec(
             CesiumCartesian3.fromDegrees(minWGS84[0], maxWGS84[1])
           )
-          var latDir = new THREE.Vector3()
+          var latDir = new Vector3()
             .subVectors(bottomLeft, topLeft)
             .normalize()
 
@@ -288,7 +312,7 @@ export default {
           cvm[11],
           cvm[15]
         )
-        three.camera.lookAt(new THREE.Vector3(0, 0, 0))
+        three.camera.lookAt(new Vector3(0, 0, 0))
 
         var width = ThreeContainer.clientWidth
         var height = ThreeContainer.clientHeight
