@@ -35,12 +35,20 @@ const config = {
             }
           ]
         },
+        // {
+        //   test: /\.glsl$/,
+        //   use: [
+        //     {
+        //       loader: 'webpack-glsl'
+        //     }
+        //   ]
+        // },
         {
-          test: /\.glsl$/,
+          test: /\.(glsl|vs|fs|vert|frag)$/,
+          exclude: /node_modules/,
           use: [
-            {
-              loader: 'webpack-glsl'
-            }
+            'raw-loader',
+            'glslify-loader'
           ]
         }
       ]

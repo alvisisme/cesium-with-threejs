@@ -13,11 +13,7 @@
 
 <script>
 import * as Cesium from '@/thirdparty/Cesium/Cesium.js'
-// import * as THREE from '@/thirdparty/Three/Three.js'
-const THREE = require('three')
-
-console.log(Cesium)
-console.log(THREE)
+import * as THREE from '@/thirdparty/Three/Three.js'
 
 export default {
   name: 'App',
