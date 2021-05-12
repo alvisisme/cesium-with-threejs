@@ -267,7 +267,7 @@ export default {
 
           // configure entity position and orientation
           _3Dobjects[id].threeMesh.position.copy(center)
-          _3Dobjects[id].threeMesh.lookAt(centerHigh)
+          _3Dobjects[id].threeMesh.lookAt(centerHigh.x, centerHigh.y, centerHigh.z)
           _3Dobjects[id].threeMesh.up.copy(latDir)
         }
 

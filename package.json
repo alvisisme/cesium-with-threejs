@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "cesium": "1.81.0",
-    "core-js": "3.6.5",
-    "three": "0.87.1",
-    "vue": "2.6.11"
+    "core-js": "3.12.1",
+    "three": "0.88.0",
+    "vue": "2.6.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
