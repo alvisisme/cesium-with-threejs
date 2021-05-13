@@ -20,6 +20,12 @@ gulp.task('postInstall', function () {
         'node_modules/three/src/**'
       ],
       subDir: true
+    }, {
+      name: 'ThreeExamples',
+      glob: [
+        'node_modules/three/examples/jsm/**'
+      ],
+      subDir: true
     }
   ]
 

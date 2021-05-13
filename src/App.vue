@@ -12,8 +12,6 @@
 </template>
 
 <script>
-// import * as Cesium from '@/thirdparty/Cesium/Cesium.js'
-// import * as THREE from '@/thirdparty/Three/Three.js'
 import {
   VERSION as CesiumVersion,
   Cartesian3 as CesiumCartesian3,
@@ -30,10 +28,11 @@ import {
   Scene,
   PerspectiveCamera,
   WebGLRenderer,
-  Vector2,
+  // Vector2,
   Vector3,
   MeshNormalMaterial,
-  LatheGeometry,
+  // LatheGeometry,
+  BoxGeometry,
   Mesh,
   Group,
   AmbientLight,
@@ -41,36 +40,29 @@ import {
   AxesHelper
 } from '@/thirdparty/Three/Three.js'
 
+import { GLTFLoader } from '@/thirdparty/ThreeExamples/loaders/GLTFLoader.js'
+
 export default {
   name: 'App',
   mounted() {
     function main() {
-      // Cesium 相关模块
-      // var CesiumCartesian3 = Cesium.Cartesian3
-      // var CesiumViewer = Cesium.Viewer
-      // var CesiumShadowMode = Cesium.ShadowMode
-      // var CesiumColor = Cesium.Color
-      // var CesiumMath = Cesium.Math
-      // var CesiumTileMapServiceImageryProvider = Cesium.TileMapServiceImageryProvider
-      // var CesiumBuildModuleUrl = Cesium.buildModuleUrl
-
-      var loadingIndicator = document.getElementById('loadingIndicator')
+      const loadingIndicator = document.getElementById('loadingIndicator')
       loadingIndicator.style.display = 'none'
 
       // boundaries in WGS84 around the object
-      var minWGS84 = [115.23, 39.55]
-      var maxWGS84 = [116.23, 41.55]
-      var cesiumContainer = document.getElementById('cesiumContainer')
-      var ThreeContainer = document.getElementById('ThreeContainer')
+      let minWGS84 = [115.23, 39.55]
+      let maxWGS84 = [116.23, 41.55]
+      const cesiumContainer = document.getElementById('cesiumContainer')
+      const ThreeContainer = document.getElementById('ThreeContainer')
 
-      var _3Dobjects = [] // Could be any Three.js object mesh
-      var three = {
+      const _3Dobjects = [] // Could be any Three.js object mesh
+      const three = {
         renderer: null,
         camera: null,
         scene: null
       }
 
-      var cesium = {
+      const cesium = {
         viewer: null
       }
 
@@ -121,7 +113,11 @@ export default {
           terrainShadows: CesiumShadowMode.DISABLED
         })
 
-        var center = CesiumCartesian3.fromDegrees(
+        // 开启或关闭地下模式
+        cesium.viewer.scene.screenSpaceCameraController.enableCollisionDetection = true
+        cesium.viewer.scene.globe.translucency.frontFaceAlpha = 0.8 // 设置透明度
+
+        const center = CesiumCartesian3.fromDegrees(
           (minWGS84[0] + maxWGS84[0]) / 2,
           (minWGS84[1] + maxWGS84[1]) / 2 - 1,
           200000
@@ -135,15 +131,30 @@ export default {
           },
           duration: 1
         })
+
+        // Cesium entity
+        const entity = {
+          name: 'Polygon',
+          polygon: {
+            hierarchy: CesiumCartesian3.fromDegreesArray([
+              minWGS84[0], minWGS84[1],
+              maxWGS84[0], minWGS84[1],
+              maxWGS84[0], maxWGS84[1],
+              minWGS84[0], maxWGS84[1]
+            ]),
+            material: CesiumColor.RED.withAlpha(0.2)
+          }
+        }
+        cesium.viewer.entities.add(entity)
       }
 
-      function initThree() {
-        var fov = 45
-        var width = window.innerWidth
-        var height = window.innerHeight
-        var aspect = width / height
-        var near = 1
-        var far = 10 * 1000 * 1000
+      function initThree(callback) {
+        const fov = 45
+        const width = window.innerWidth
+        const height = window.innerHeight
+        const aspect = width / height
+        const near = 1
+        const far = 10 * 1000 * 1000
 
         three.scene = new Scene()
         three.camera = new PerspectiveCamera(fov, aspect, near, far)
@@ -154,54 +165,31 @@ export default {
 
         const axesHelper = new AxesHelper(3000000000000)
         three.scene.add(axesHelper)
+
+        init3DObject(function () {
+          callback()
+        }) // Initialize Three.js object mesh with Cesium Cartesian coordinate system
       }
 
-      function init3DObject() {
-        // Cesium entity
-        var entity = {
-          name: 'Polygon',
-          polygon: {
-            hierarchy: CesiumCartesian3.fromDegreesArray([
-              minWGS84[0],
-              minWGS84[1],
-              maxWGS84[0],
-              minWGS84[1],
-              maxWGS84[0],
-              maxWGS84[1],
-              minWGS84[0],
-              maxWGS84[1]
-            ]),
-            material: CesiumColor.RED.withAlpha(0.2)
-          }
-        }
-        cesium.viewer.entities.add(entity)
-
+      function init3DObject(callback) {
         // Three.js Objects
-        // Lathe geometry
-        var doubleSideMaterial = new MeshNormalMaterial({
+        const doubleSideMaterial = new MeshNormalMaterial({
           side: DoubleSide
         })
-        var segments = 10
-        var points = []
-        for (var i = 0; i < segments; i++) {
-          points.push(
-            new Vector2(Math.sin(i * 0.2) * segments + 5, (i - 5) * 2)
-          )
-        }
-        var geometry = new LatheGeometry(points)
-        var latheMesh = new Mesh(geometry, doubleSideMaterial)
-        const scaleSize = 1500
-        latheMesh.scale.set(scaleSize, scaleSize, scaleSize) // 放大物体，不然可能在地球表面看不见
+        const geometry = new BoxGeometry(1, 2, 4)
+        const mesh = new Mesh(geometry, doubleSideMaterial)
+        const scaleSize = 15000
+        mesh.scale.set(scaleSize, scaleSize, scaleSize) // 放大物体，不然可能在地球表面看不见
 
         /**
-         *  three的坐标系（右手坐标系）
+         *  three的坐标系（右手坐标系），关键数据结构 Vector3
          *    Y
          *    |
          *    |___ X
          *   /
          * Z
          *
-         * Cesium的坐标系
+         * Cesium的坐标系，关键数据结构 Cartesian3
          *    Z
          *    |
          *    |__ Y
@@ -209,21 +197,42 @@ export default {
          * X
          *
          */
-        // 在three的坐标系空间了，先向Z轴平移模型，然后向X轴翻转90度，物体就面向Y轴了，对应Cesiumn的Z轴，相当于在Cesium里调高了模型高度
-        const up = 15000.0
-        latheMesh.position.z += up //  translate "up" in Three.js space so the "bottom" of the mesh is the handle
-        latheMesh.rotation.x = Math.PI / 2 // rotate mesh for Cesium's Y-up system
+        // 在three的坐标系空间里，先向Z轴平移模型，然后绕X轴向上翻转90度，物体就面向Y轴了，对应Cesiumn的Z轴
+        // const up = 15000.0
+        // mesh.position.z += up //  translate "up" in Three.js space so the "bottom" of the mesh is the handle
+        // mesh.rotation.x = Math.PI / 2 // rotate mesh for Cesium's Y-up system
 
-        const latheMeshYup = new Group()
-        latheMeshYup.add(latheMesh)
-        three.scene.add(latheMeshYup) // don’t forget to add it to the Three.js scene manually
+        // 将模型放入同一个组，然后对改组做一个整体的位置变换
+        const meshYup = new Group()
+        meshYup.add(mesh)
+        three.scene.add(meshYup) // don’t forget to add it to the Three.js scene manually
 
         // Assign Three.js object mesh to our object array
-        var _3DOB = new _3DObject()
-        _3DOB.threeMesh = latheMeshYup
+        const _3DOB = new _3DObject()
+        _3DOB.threeMesh = meshYup
         _3DOB.minWGS84 = minWGS84
         _3DOB.maxWGS84 = maxWGS84
         _3Dobjects.push(_3DOB)
+
+        const loader = new GLTFLoader().setPath('models/gltf/')
+        loader.load('example.glb', function (gltf) {
+          const scaleSize = 150000
+          gltf.scene.scale.set(scaleSize, scaleSize, scaleSize)
+          gltf.scene.position.z += 15000.0
+          gltf.scene.rotation.x = Math.PI / 2
+
+          const meshYup = new Group()
+          meshYup.add(gltf.scene)
+          three.scene.add(meshYup) // don’t forget to add it to the Three.js scene manually
+          // Assign Three.js object mesh to our object array
+          const _3DOB = new _3DObject()
+          _3DOB.threeMesh = meshYup
+          _3DOB.minWGS84 = minWGS84
+          _3DOB.maxWGS84 = maxWGS84
+          _3Dobjects.push(_3DOB)
+
+          callback()
+        })
       }
 
       // Looping Renderer
@@ -238,35 +247,35 @@ export default {
         ) // ThreeJS FOV is vertical
         three.camera.updateProjectionMatrix()
 
-        var cartToVec = function(cart) {
+        const cartToVec = function(cart) {
           return new Vector3(cart.x, cart.y, cart.z)
         }
 
         // Configure Three.js meshes to stand against globe center position up direction
-        for (var id in _3Dobjects) {
+        for (const id in _3Dobjects) {
           minWGS84 = _3Dobjects[id].minWGS84
           maxWGS84 = _3Dobjects[id].maxWGS84
           // convert lat/long center position to Cartesian3
-          var center = CesiumCartesian3.fromDegrees(
+          const center = CesiumCartesian3.fromDegrees(
             (minWGS84[0] + maxWGS84[0]) / 2,
             (minWGS84[1] + maxWGS84[1]) / 2
           )
 
           // get forward direction for orienting model
-          var centerHigh = CesiumCartesian3.fromDegrees(
+          const centerHigh = CesiumCartesian3.fromDegrees(
             (minWGS84[0] + maxWGS84[0]) / 2,
             (minWGS84[1] + maxWGS84[1]) / 2,
             1
           )
 
           // use direction from bottom left to top left as up-vector
-          var bottomLeft = cartToVec(
+          const bottomLeft = cartToVec(
             CesiumCartesian3.fromDegrees(minWGS84[0], minWGS84[1])
           )
-          var topLeft = cartToVec(
+          const topLeft = cartToVec(
             CesiumCartesian3.fromDegrees(minWGS84[0], maxWGS84[1])
           )
-          var latDir = new Vector3().subVectors(bottomLeft, topLeft).normalize()
+          const latDir = new Vector3().subVectors(bottomLeft, topLeft).normalize()
 
           // configure entity position and orientation
           _3Dobjects[id].threeMesh.position.copy(center)
@@ -281,8 +290,8 @@ export default {
         // Clone Cesium Camera projection position so the
         // Three.js Object will appear to be at the same place as above the Cesium Globe
         three.camera.matrixAutoUpdate = false
-        var cvm = cesium.viewer.camera.viewMatrix
-        var civm = cesium.viewer.camera.inverseViewMatrix
+        const cvm = cesium.viewer.camera.viewMatrix
+        const civm = cesium.viewer.camera.inverseViewMatrix
         three.camera.lookAt(0, 0, 0)
         /* eslint-disable */
         three.camera.matrixWorld.set(
@@ -298,9 +307,9 @@ export default {
           cvm[3], cvm[7], cvm[11], cvm[15]
         )
         /* eslint-enable */
-        var width = ThreeContainer.clientWidth
-        var height = ThreeContainer.clientHeight
-        var aspect = width / height
+        const width = ThreeContainer.clientWidth
+        const height = ThreeContainer.clientHeight
+        const aspect = width / height
         three.camera.aspect = aspect
         three.camera.updateProjectionMatrix()
         three.renderer.setSize(width, height)
@@ -315,9 +324,9 @@ export default {
       }
 
       initCesium() // Initialize Cesium renderer
-      initThree() // Initialize Three.js renderer
-      init3DObject() // Initialize Three.js object mesh with Cesium Cartesian coordinate system
-      loop() // Looping renderer
+      initThree(function () {
+        loop() // Looping renderer
+      }) // Initialize Three.js renderer
     }
     console.info(' Cesium : ' + CesiumVersion)
     console.info('ThreeJs : ' + ThreeVersion)

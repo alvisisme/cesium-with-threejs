@@ -1,3 +1,6 @@
+
+const production = process.env.NODE_ENV === 'production'
+
 module.exports = {
   root: true,
   env: {
@@ -11,8 +14,9 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-console': production ? 'warn' : 'off',
+    'no-debugger': production ? 'warn' : 'off',
+    "no-unused-vars": production ? 'error' : 'off',
     'space-before-function-paren': 0
   }
 }
