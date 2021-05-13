@@ -34,6 +34,7 @@ import {
   LatheGeometry,
   Mesh,
   Group,
+  AmbientLight,
   DoubleSide,
   AxisHelper
 } from '@/thirdparty/Three/Three.js'
@@ -145,6 +146,8 @@ export default {
         three.scene = new Scene()
         three.camera = new PerspectiveCamera(fov, aspect, near, far)
         three.renderer = new WebGLRenderer({ alpha: true })
+        const Amlight = new AmbientLight(0xffffff, 2)
+        three.scene.add(Amlight)
         ThreeContainer.appendChild(three.renderer.domElement)
 
         const AxesHelper = new AxisHelper(3000000000000)
@@ -261,13 +264,15 @@ export default {
           var topLeft = cartToVec(
             CesiumCartesian3.fromDegrees(minWGS84[0], maxWGS84[1])
           )
-          var latDir = new Vector3()
-            .subVectors(bottomLeft, topLeft)
-            .normalize()
+          var latDir = new Vector3().subVectors(bottomLeft, topLeft).normalize()
 
           // configure entity position and orientation
           _3Dobjects[id].threeMesh.position.copy(center)
-          _3Dobjects[id].threeMesh.lookAt(centerHigh.x, centerHigh.y, centerHigh.z)
+          _3Dobjects[id].threeMesh.lookAt(
+            centerHigh.x,
+            centerHigh.y,
+            centerHigh.z
+          )
           _3Dobjects[id].threeMesh.up.copy(latDir)
         }
 
@@ -276,51 +281,28 @@ export default {
         three.camera.matrixAutoUpdate = false
         var cvm = cesium.viewer.camera.viewMatrix
         var civm = cesium.viewer.camera.inverseViewMatrix
+        three.camera.lookAt(0, 0, 0)
+        /* eslint-disable */
         three.camera.matrixWorld.set(
-          civm[0],
-          civm[4],
-          civm[8],
-          civm[12],
-          civm[1],
-          civm[5],
-          civm[9],
-          civm[13],
-          civm[2],
-          civm[6],
-          civm[10],
-          civm[14],
-          civm[3],
-          civm[7],
-          civm[11],
-          civm[15]
+          civm[0], civm[4], civm[8],  civm[12],
+          civm[1], civm[5], civm[9],  civm[13],
+          civm[2], civm[6], civm[10], civm[14],
+          civm[3], civm[7], civm[11], civm[15]
         )
         three.camera.matrixWorldInverse.set(
-          cvm[0],
-          cvm[4],
-          cvm[8],
-          cvm[12],
-          cvm[1],
-          cvm[5],
-          cvm[9],
-          cvm[13],
-          cvm[2],
-          cvm[6],
-          cvm[10],
-          cvm[14],
-          cvm[3],
-          cvm[7],
-          cvm[11],
-          cvm[15]
+          cvm[0], cvm[4], cvm[8],  cvm[12],
+          cvm[1], cvm[5], cvm[9],  cvm[13],
+          cvm[2], cvm[6], cvm[10], cvm[14],
+          cvm[3], cvm[7], cvm[11], cvm[15]
         )
-        three.camera.lookAt(new Vector3(0, 0, 0))
-
+        /* eslint-enable */
         var width = ThreeContainer.clientWidth
         var height = ThreeContainer.clientHeight
         var aspect = width / height
         three.camera.aspect = aspect
         three.camera.updateProjectionMatrix()
-
         three.renderer.setSize(width, height)
+        three.renderer.clear()
         three.renderer.render(three.scene, three.camera)
       }
 

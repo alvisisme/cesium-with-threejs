@@ -11,7 +11,7 @@
   "dependencies": {
     "cesium": "1.81.0",
     "core-js": "3.12.1",
-    "three": "0.95.0",
+    "three": "0.96.0",
     "vue": "2.6.12"
   },
   "devDependencies": {

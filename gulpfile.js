@@ -7,7 +7,6 @@ gulp.task('postInstall', function () {
   const thirdPartyDirectory = 'src/thirdparty'
   fsExtra.removeSync(thirdPartyDirectory)
 
-  console.log('post install......')
   var webSiteLibs = [
     {
       name: 'Cesium',
@@ -35,7 +34,6 @@ gulp.task('postInstall', function () {
       nodir: true,
       base: module.base
     }
-    console.log(dest)
     promises.push(streamToPromise(gulp.src(module.glob, options).pipe(gulp.dest(dest))))
   })
 
