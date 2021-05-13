@@ -15,6 +15,7 @@
 // import * as Cesium from '@/thirdparty/Cesium/Cesium.js'
 // import * as THREE from '@/thirdparty/Three/Three.js'
 import {
+  VERSION as CesiumVersion,
   Cartesian3 as CesiumCartesian3,
   Viewer as CesiumViewer,
   ShadowMode as CesiumShadowMode,
@@ -25,6 +26,7 @@ import {
 } from '@/thirdparty/Cesium/Cesium.js'
 // 使用到的 ThreeJs模块
 import {
+  REVISION as ThreeVersion,
   Scene,
   PerspectiveCamera,
   WebGLRenderer,
@@ -36,7 +38,7 @@ import {
   Group,
   AmbientLight,
   DoubleSide,
-  AxisHelper
+  AxesHelper
 } from '@/thirdparty/Three/Three.js'
 
 export default {
@@ -150,8 +152,8 @@ export default {
         three.scene.add(Amlight)
         ThreeContainer.appendChild(three.renderer.domElement)
 
-        const AxesHelper = new AxisHelper(3000000000000)
-        three.scene.add(AxesHelper)
+        const axesHelper = new AxesHelper(3000000000000)
+        three.scene.add(axesHelper)
       }
 
       function init3DObject() {
@@ -317,7 +319,8 @@ export default {
       init3DObject() // Initialize Three.js object mesh with Cesium Cartesian coordinate system
       loop() // Looping renderer
     }
-
+    console.info(' Cesium : ' + CesiumVersion)
+    console.info('ThreeJs : ' + ThreeVersion)
     main()
   }
 }
