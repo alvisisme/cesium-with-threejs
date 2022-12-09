@@ -1,5 +1,18 @@
 ---
 kind: pipeline
+type: docker
+name: Build
+steps:
+- name: build
+  image: node:16.0.0
+  commands:
+    - npm config set registry https://registry.npmmirror.com
+    - npm i -g pnpm
+    - pnpm i
+    - pnpm build
+
+---
+kind: pipeline
 type: exec               
 name: Mirror
 steps:

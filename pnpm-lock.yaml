@@ -7,7 +7,7 @@ specifiers:
   '@vue/eslint-config-standard': ^5.1.2
   babel-eslint: ^10.1.0
   bluebird: ^3.7.2
-  cesium: 1.90.0
+  cesium: 1.95.0
   core-js: 3.12.1
   eslint: ^6.8.0
   eslint-plugin-import: ^2.26.0
@@ -29,7 +29,7 @@ specifiers:
   webpack: ^4.46.0
 
 dependencies:
-  cesium: registry.npmmirror.com/cesium/1.90.0
+  cesium: registry.npmmirror.com/cesium/1.95.0
   core-js: registry.npmmirror.com/core-js/3.12.1
   three: registry.npmmirror.com/three/0.147.0
   vue: registry.npmmirror.com/vue/2.7.14
@@ -3957,10 +3957,10 @@ packages:
     version: 0.12.0
     dev: true
 
-  registry.npmmirror.com/cesium/1.90.0:
-    resolution: {integrity: sha512-/Nzqu3OdtOd/0rHg7rVca1ht3gGRcFg0D8FWTm89oGnc1sqHGLffXMHa774Fev1L0EPwzZN4h9PmfFeJnMXMbw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cesium/-/cesium-1.90.0.tgz}
+  registry.npmmirror.com/cesium/1.95.0:
+    resolution: {integrity: sha512-59U0lZD/wmSJa4t9FcK1/sp6PyCpx7h8c4giLd8VM7LJDL6w0G0o4QGlZ4TSJTBe4VIClf+qPDUf47wyBu4YoA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cesium/-/cesium-1.95.0.tgz}
     name: cesium
-    version: 1.90.0
+    version: 1.95.0
     dev: false
 
   registry.npmmirror.com/chalk/1.1.3:
