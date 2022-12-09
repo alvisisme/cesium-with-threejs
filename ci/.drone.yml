@@ -1,0 +1,11 @@
+---
+kind: pipeline
+type: exec               
+name: Mirror
+steps:
+- name: gitee
+  commands:
+    - git push --mirror git@gitee.com:alvisisme/$DRONE_REPO_NAME
+- name: github
+  commands:
+    - git push --mirror git@github.com:alvisisme/$DRONE_REPO_NAME
