@@ -1,16 +1,17 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@tweenjs/tween.js': ^18.6.4
   '@vue/cli-plugin-babel': ~4.5.19
   '@vue/cli-plugin-eslint': ~4.5.19
   '@vue/cli-service': ~4.5.19
   '@vue/eslint-config-standard': ^5.1.2
-  '@zip.js/zip.js': ^2.3.12
+  '@zip.js/zip.js': 2.4.x
   autolinker: ^3.14.3
   babel-eslint: ^10.1.0
   bitmap-sdf: ^1.0.3
   bluebird: ^3.7.2
-  cesium: 1.96.0
+  cesium: 1.99.0
   core-js: 3.12.1
   dompurify: ^2.2.2
   earcut: ^2.2.4
@@ -26,21 +27,20 @@ specifiers:
   gulp: ^4.0.2
   jsep: ^0.3.1
   kdbush: ^3.0.0
-  ktx-parse: ^0.2.1
+  ktx-parse: ^0.4.5
   lerc: ^2.0.0
   less: ^3.13.1
   less-loader: ^5.0.0
   lint-staged: ^9.5.0
   mersenne-twister: ^1.1.0
-  meshoptimizer: ^0.16.1
-  nosleep.js: ^0.9.0
-  pako: ^1.0.4
-  protobufjs: 7.0.0
+  meshoptimizer: ^0.18.1
+  nosleep.js: ^0.12.0
+  pako: ^2.0.4
+  protobufjs: ^7.1.0
   raw-loader: ^4.0.2
   rbush: ^3.0.1
   three: 0.147.0
   topojson-client: ^3.1.0
-  tween.js: ^16.6.0
   urijs: ^1.19.7
   url-loader: ^4.1.1
   vue: 2.7.14
@@ -48,27 +48,27 @@ specifiers:
   webpack: ^4.46.0
 
 dependencies:
-  '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.6.60
+  '@tweenjs/tween.js': registry.npmmirror.com/@tweenjs/tween.js/18.6.4
+  '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.4.26
   autolinker: registry.npmmirror.com/autolinker/3.16.2
   bitmap-sdf: registry.npmmirror.com/bitmap-sdf/1.0.4
-  cesium: registry.npmmirror.com/cesium/1.96.0
+  cesium: registry.npmmirror.com/cesium/1.99.0
   core-js: registry.npmmirror.com/core-js/3.12.1
   dompurify: registry.npmmirror.com/dompurify/2.4.1
   earcut: registry.npmmirror.com/earcut/2.2.4
   grapheme-splitter: registry.npmmirror.com/grapheme-splitter/1.0.4
   jsep: registry.npmmirror.com/jsep/0.3.5
   kdbush: registry.npmmirror.com/kdbush/3.0.0
-  ktx-parse: registry.npmmirror.com/ktx-parse/0.2.2
+  ktx-parse: registry.npmmirror.com/ktx-parse/0.4.5
   lerc: registry.npmmirror.com/lerc/2.0.0
   mersenne-twister: registry.npmmirror.com/mersenne-twister/1.1.0
-  meshoptimizer: registry.npmmirror.com/meshoptimizer/0.16.1
-  nosleep.js: registry.npmmirror.com/nosleep.js/0.9.0
-  pako: registry.npmmirror.com/pako/1.0.11
-  protobufjs: registry.npmmirror.com/protobufjs/7.0.0
+  meshoptimizer: registry.npmmirror.com/meshoptimizer/0.18.1
+  nosleep.js: registry.npmmirror.com/nosleep.js/0.12.0
+  pako: registry.npmmirror.com/pako/2.1.0
+  protobufjs: registry.npmmirror.com/protobufjs/7.1.2
   rbush: registry.npmmirror.com/rbush/3.0.1
   three: registry.npmmirror.com/three/0.147.0
   topojson-client: registry.npmmirror.com/topojson-client/3.1.0
-  tween.js: registry.npmmirror.com/tween.js/16.6.0
   urijs: registry.npmmirror.com/urijs/1.19.11
   vue: registry.npmmirror.com/vue/2.7.14
 
@@ -1864,6 +1864,12 @@ packages:
     version: 1.0.2
     dev: true
 
+  registry.npmmirror.com/@tweenjs/tween.js/18.6.4:
+    resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tweenjs/tween.js/-/tween.js-18.6.4.tgz}
+    name: '@tweenjs/tween.js'
+    version: 18.6.4
+    dev: false
+
   registry.npmmirror.com/@types/body-parser/1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/body-parser/-/body-parser-1.19.2.tgz}
     name: '@types/body-parser'
@@ -1939,12 +1945,6 @@ packages:
     name: '@types/json5'
     version: 0.0.29
     dev: true
-
-  registry.npmmirror.com/@types/long/4.0.2:
-    resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/long/-/long-4.0.2.tgz}
-    name: '@types/long'
-    version: 4.0.2
-    dev: false
 
   registry.npmmirror.com/@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mime/-/mime-3.0.1.tgz}
@@ -2803,11 +2803,10 @@ packages:
     version: 4.2.2
     dev: true
 
-  registry.npmmirror.com/@zip.js/zip.js/2.6.60:
-    resolution: {integrity: sha512-95Vd9cmbiIGIBrR6kzMIkxPJp6xo67NYMAcEFS9fNgETHX87/kEpLrh48MM9JEbe+ghizb5gf2+9gGUfGsQ4nw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@zip.js/zip.js/-/zip.js-2.6.60.tgz}
+  registry.npmmirror.com/@zip.js/zip.js/2.4.26:
+    resolution: {integrity: sha512-I9HBO3BHIxEMQmltmHM3iqUW6IHqi3gsL9wTSXvHTRpOrA6q2OxtR58EDSaOGjHhDVJ+wIOAxZyKq2x00AVmqw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@zip.js/zip.js/-/zip.js-2.4.26.tgz}
     name: '@zip.js/zip.js'
-    version: 2.6.60
-    engines: {deno: '>=1.0.0', node: '>=16.5.0'}
+    version: 2.4.26
     dev: false
 
   registry.npmmirror.com/accepts/1.3.8:
@@ -4084,13 +4083,14 @@ packages:
     version: 0.12.0
     dev: true
 
-  registry.npmmirror.com/cesium/1.96.0:
-    resolution: {integrity: sha512-OTkkKpByP+8KQCd8i7EFHmnql8yW9gVS7bxE9DGWdEULinVp/hdt56bd6VtcElTakmWItqpSql1v6r2EoHU35g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cesium/-/cesium-1.96.0.tgz}
+  registry.npmmirror.com/cesium/1.99.0:
+    resolution: {integrity: sha512-bVN7Bskd9PVhQe9Ak9DEr7wEckbCJc0UPq58MKWGWAkQfiYob8odh6luqY5Yz26trr3tWwni1xWjsCe94y37jw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cesium/-/cesium-1.99.0.tgz}
     name: cesium
-    version: 1.96.0
+    version: 1.99.0
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.6.60
+      '@tweenjs/tween.js': registry.npmmirror.com/@tweenjs/tween.js/18.6.4
+      '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.4.26
       autolinker: registry.npmmirror.com/autolinker/3.16.2
       bitmap-sdf: registry.npmmirror.com/bitmap-sdf/1.0.4
       dompurify: registry.npmmirror.com/dompurify/2.4.1
@@ -4098,16 +4098,15 @@ packages:
       grapheme-splitter: registry.npmmirror.com/grapheme-splitter/1.0.4
       jsep: registry.npmmirror.com/jsep/0.3.5
       kdbush: registry.npmmirror.com/kdbush/3.0.0
-      ktx-parse: registry.npmmirror.com/ktx-parse/0.2.2
+      ktx-parse: registry.npmmirror.com/ktx-parse/0.4.5
       lerc: registry.npmmirror.com/lerc/2.0.0
       mersenne-twister: registry.npmmirror.com/mersenne-twister/1.1.0
-      meshoptimizer: registry.npmmirror.com/meshoptimizer/0.16.1
-      nosleep.js: registry.npmmirror.com/nosleep.js/0.9.0
-      pako: registry.npmmirror.com/pako/1.0.11
-      protobufjs: registry.npmmirror.com/protobufjs/7.0.0
+      meshoptimizer: registry.npmmirror.com/meshoptimizer/0.18.1
+      nosleep.js: registry.npmmirror.com/nosleep.js/0.12.0
+      pako: registry.npmmirror.com/pako/2.1.0
+      protobufjs: registry.npmmirror.com/protobufjs/7.1.2
       rbush: registry.npmmirror.com/rbush/3.0.1
       topojson-client: registry.npmmirror.com/topojson-client/3.1.0
-      tween.js: registry.npmmirror.com/tween.js/16.6.0
       urijs: registry.npmmirror.com/urijs/1.19.11
     dev: false
 
@@ -9166,10 +9165,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  registry.npmmirror.com/ktx-parse/0.2.2:
-    resolution: {integrity: sha512-cFBc1jnGG2WlUf52NbDUXK2obJ+Mo9WUkBRvr6tP6CKxRMvZwDDFNV3JAS4cewETp5KyexByfWm9sm+O8AffiQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ktx-parse/-/ktx-parse-0.2.2.tgz}
+  registry.npmmirror.com/ktx-parse/0.4.5:
+    resolution: {integrity: sha512-MK3FOody4TXbFf8Yqv7EBbySw7aPvEcPX++Ipt6Sox+/YMFvR5xaTyhfNSk1AEmMy+RYIw81ctN4IMxCB8OAlg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ktx-parse/-/ktx-parse-0.4.5.tgz}
     name: ktx-parse
-    version: 0.2.2
+    version: 0.4.5
     dev: false
 
   registry.npmmirror.com/last-run/1.1.1:
@@ -9743,10 +9742,10 @@ packages:
     version: 1.1.0
     dev: false
 
-  registry.npmmirror.com/meshoptimizer/0.16.1:
-    resolution: {integrity: sha512-HWGGiUkjfbR6c70FvK1DujHg/e0gdIa7lzWoBtw0/4nexd6X6G2zmzfe9m3jpJlk4UFlBIfImQk2oD16m3QMew==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/meshoptimizer/-/meshoptimizer-0.16.1.tgz}
+  registry.npmmirror.com/meshoptimizer/0.18.1:
+    resolution: {integrity: sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/meshoptimizer/-/meshoptimizer-0.18.1.tgz}
     name: meshoptimizer
-    version: 0.16.1
+    version: 0.18.1
     dev: false
 
   registry.npmmirror.com/methods/1.1.2:
@@ -10241,10 +10240,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  registry.npmmirror.com/nosleep.js/0.9.0:
-    resolution: {integrity: sha512-qLOl2MmuGOPZY7Exi0kYJSCr2e9IcAtOykOo7hXUGAoaMC1Iqj0m+Aj2REuay68mDkhbc5CoA4ccUvcZI175Kw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nosleep.js/-/nosleep.js-0.9.0.tgz}
+  registry.npmmirror.com/nosleep.js/0.12.0:
+    resolution: {integrity: sha512-9d1HbpKLh3sdWlhXMhU6MMH+wQzKkrgfRkYV0EBdvt99YJfj0ilCJrWRDYG2130Tm4GXbEoTCx5b34JSaP+HhA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nosleep.js/-/nosleep.js-0.12.0.tgz}
     name: nosleep.js
-    version: 0.9.0
+    version: 0.12.0
     dev: false
 
   registry.npmmirror.com/now-and-later/2.0.1:
@@ -10667,6 +10666,13 @@ packages:
     resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pako/-/pako-1.0.11.tgz}
     name: pako
     version: 1.0.11
+    dev: true
+
+  registry.npmmirror.com/pako/2.1.0:
+    resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pako/-/pako-2.1.0.tgz}
+    name: pako
+    version: 2.1.0
+    dev: false
 
   registry.npmmirror.com/parallel-transform/1.2.0:
     resolution: {integrity: sha512-P2vSmIu38uIlvdcU7fDkyrxj33gTUy/ABO5ZUbGowxNCopBq/OoD42bP4UmMrJoPyk4Uqf0mu3mtWBhHCZD8yg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/parallel-transform/-/parallel-transform-1.2.0.tgz}
@@ -11556,10 +11562,10 @@ packages:
       bluebird: registry.npmmirror.com/bluebird/3.7.2
     dev: true
 
-  registry.npmmirror.com/protobufjs/7.0.0:
-    resolution: {integrity: sha512-ffNIEm+quOcYtQvHdW406v1NQmZSuqVklxsXk076BtuFnlYZfigLU+JOMrTD8TUOyqHYbRI/fSVNvgd25YeN3w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/protobufjs/-/protobufjs-7.0.0.tgz}
+  registry.npmmirror.com/protobufjs/7.1.2:
+    resolution: {integrity: sha512-4ZPTPkXCdel3+L81yw3dG6+Kq3umdWKh7Dc7GW/CpNk4SX3hK58iPCWeCyhVTDrbkNeKrYNZ7EojM5WDaEWTLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/protobufjs/-/protobufjs-7.1.2.tgz}
     name: protobufjs
-    version: 7.0.0
+    version: 7.1.2
     engines: {node: '>=12.0.0'}
     requiresBuild: true
     dependencies:
@@ -11573,7 +11579,6 @@ packages:
       '@protobufjs/path': registry.npmmirror.com/@protobufjs/path/1.1.2
       '@protobufjs/pool': registry.npmmirror.com/@protobufjs/pool/1.1.0
       '@protobufjs/utf8': registry.npmmirror.com/@protobufjs/utf8/1.1.0
-      '@types/long': registry.npmmirror.com/@types/long/4.0.2
       '@types/node': registry.npmmirror.com/@types/node/18.11.12
       long: registry.npmmirror.com/long/5.2.1
     dev: false
@@ -13665,13 +13670,6 @@ packages:
     dependencies:
       safe-buffer: registry.npmmirror.com/safe-buffer/5.2.1
     dev: true
-
-  registry.npmmirror.com/tween.js/16.6.0:
-    resolution: {integrity: sha512-IIhm0VsiBxNJO+WsXUvjcq+u3sKfOwSu67Yh9T5xSpXb2eHHi9+uZDDGBc7uMXjfud0bYiLkYCEb7JXIGXi5KA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tween.js/-/tween.js-16.6.0.tgz}
-    name: tween.js
-    version: 16.6.0
-    deprecated: This package has moved to @tweenjs/tween.js. Please update your dependencies.
-    dev: false
 
   registry.npmmirror.com/tweetnacl/0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tweetnacl/-/tweetnacl-0.14.5.tgz}

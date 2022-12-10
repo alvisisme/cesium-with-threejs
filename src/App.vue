@@ -203,7 +203,7 @@ export default {
         // mesh.position.z += up //  translate "up" in Three.js space so the "bottom" of the mesh is the handle
         // mesh.rotation.x = Math.PI / 2 // rotate mesh for Cesium's Y-up system
 
-        // 将模型放入同一个组，然后对改组做一个整体的位置变换
+        // 将模型放入同一个组，然后对该组做一个整体的位置变换
         const meshYup = new Group()
         meshYup.add(mesh)
         three.scene.add(meshYup) // don’t forget to add it to the Three.js scene manually
@@ -329,7 +329,7 @@ export default {
         loop() // Looping renderer
       }) // Initialize Three.js renderer
     }
-    console.info(' Cesium : ' + CesiumVersion)
+    console.info('Cesium : ' + CesiumVersion)
     console.info('ThreeJs : ' + ThreeVersion)
     main()
   }
