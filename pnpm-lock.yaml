@@ -1,20 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@tweenjs/tween.js': ^18.6.4
   '@vue/cli-plugin-babel': ~4.5.19
   '@vue/cli-plugin-eslint': ~4.5.19
   '@vue/cli-service': ~4.5.19
   '@vue/eslint-config-standard': ^5.1.2
-  '@zip.js/zip.js': 2.4.x
-  autolinker: ^3.14.3
   babel-eslint: ^10.1.0
-  bitmap-sdf: ^1.0.3
   bluebird: ^3.7.2
-  cesium: 1.99.0
+  cesium: 1.100.0
   core-js: 3.12.1
-  dompurify: ^2.2.2
-  earcut: ^2.2.4
   eslint: ^6.8.0
   eslint-plugin-import: ^2.26.0
   eslint-plugin-node: ^11.1.0
@@ -23,53 +17,21 @@ specifiers:
   eslint-plugin-vue: ^6.2.2
   fs-extra: ^10.1.0
   glslify-loader: ^2.0.0
-  grapheme-splitter: ^1.0.4
   gulp: ^4.0.2
-  jsep: ^0.3.1
-  kdbush: ^3.0.0
-  ktx-parse: ^0.4.5
-  lerc: ^2.0.0
   less: ^3.13.1
   less-loader: ^5.0.0
   lint-staged: ^9.5.0
-  mersenne-twister: ^1.1.0
-  meshoptimizer: ^0.18.1
-  nosleep.js: ^0.12.0
-  pako: ^2.0.4
-  protobufjs: ^7.1.0
   raw-loader: ^4.0.2
-  rbush: ^3.0.1
   three: 0.147.0
-  topojson-client: ^3.1.0
-  urijs: ^1.19.7
   url-loader: ^4.1.1
   vue: 2.7.14
   vue-template-compiler: ^2.7.14
   webpack: ^4.46.0
 
 dependencies:
-  '@tweenjs/tween.js': registry.npmmirror.com/@tweenjs/tween.js/18.6.4
-  '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.4.26
-  autolinker: registry.npmmirror.com/autolinker/3.16.2
-  bitmap-sdf: registry.npmmirror.com/bitmap-sdf/1.0.4
-  cesium: registry.npmmirror.com/cesium/1.99.0
+  cesium: registry.npmmirror.com/cesium/1.100.0
   core-js: registry.npmmirror.com/core-js/3.12.1
-  dompurify: registry.npmmirror.com/dompurify/2.4.1
-  earcut: registry.npmmirror.com/earcut/2.2.4
-  grapheme-splitter: registry.npmmirror.com/grapheme-splitter/1.0.4
-  jsep: registry.npmmirror.com/jsep/0.3.5
-  kdbush: registry.npmmirror.com/kdbush/3.0.0
-  ktx-parse: registry.npmmirror.com/ktx-parse/0.4.5
-  lerc: registry.npmmirror.com/lerc/2.0.0
-  mersenne-twister: registry.npmmirror.com/mersenne-twister/1.1.0
-  meshoptimizer: registry.npmmirror.com/meshoptimizer/0.18.1
-  nosleep.js: registry.npmmirror.com/nosleep.js/0.12.0
-  pako: registry.npmmirror.com/pako/2.1.0
-  protobufjs: registry.npmmirror.com/protobufjs/7.1.2
-  rbush: registry.npmmirror.com/rbush/3.0.1
   three: registry.npmmirror.com/three/0.147.0
-  topojson-client: registry.npmmirror.com/topojson-client/3.1.0
-  urijs: registry.npmmirror.com/urijs/1.19.11
   vue: registry.npmmirror.com/vue/2.7.14
 
 devDependencies:
@@ -1589,6 +1551,42 @@ packages:
       '@babel/helper-string-parser': registry.npmmirror.com/@babel/helper-string-parser/7.19.4
       '@babel/helper-validator-identifier': registry.npmmirror.com/@babel/helper-validator-identifier/7.19.1
       to-fast-properties: registry.npmmirror.com/to-fast-properties/2.0.0
+
+  registry.npmmirror.com/@cesium/engine/1.0.0:
+    resolution: {integrity: sha512-efbS9qzYxb6azQ2sz7FVJ8k1ae0qdDYBsv6qe3SC6vgB81x5kXqhqEbExyIbx22Z9NRbIV+iopP9M9rU+VwSCQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@cesium/engine/-/engine-1.0.0.tgz}
+    name: '@cesium/engine'
+    version: 1.0.0
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@tweenjs/tween.js': registry.npmmirror.com/@tweenjs/tween.js/18.6.4
+      '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.4.26
+      autolinker: registry.npmmirror.com/autolinker/3.16.2
+      bitmap-sdf: registry.npmmirror.com/bitmap-sdf/1.0.4
+      dompurify: registry.npmmirror.com/dompurify/2.4.1
+      earcut: registry.npmmirror.com/earcut/2.2.4
+      grapheme-splitter: registry.npmmirror.com/grapheme-splitter/1.0.4
+      jsep: registry.npmmirror.com/jsep/0.3.5
+      kdbush: registry.npmmirror.com/kdbush/3.0.0
+      ktx-parse: registry.npmmirror.com/ktx-parse/0.4.5
+      lerc: registry.npmmirror.com/lerc/2.0.0
+      mersenne-twister: registry.npmmirror.com/mersenne-twister/1.1.0
+      meshoptimizer: registry.npmmirror.com/meshoptimizer/0.18.1
+      pako: registry.npmmirror.com/pako/2.1.0
+      protobufjs: registry.npmmirror.com/protobufjs/7.1.2
+      rbush: registry.npmmirror.com/rbush/3.0.1
+      topojson-client: registry.npmmirror.com/topojson-client/3.1.0
+      urijs: registry.npmmirror.com/urijs/1.19.11
+    dev: false
+
+  registry.npmmirror.com/@cesium/widgets/1.0.0:
+    resolution: {integrity: sha512-tT/euGktMuOmKwiJvnWwh/9syTAs3sARXIVrOu9JyUAUx6aN12tZzwA9XSsDCRixL+IUtIFjDv6fq4+bvbDetA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@cesium/widgets/-/widgets-1.0.0.tgz}
+    name: '@cesium/widgets'
+    version: 1.0.0
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@cesium/engine': registry.npmmirror.com/@cesium/engine/1.0.0
+      nosleep.js: registry.npmmirror.com/nosleep.js/0.12.0
+    dev: false
 
   registry.npmmirror.com/@choojs/findup/0.2.1:
     resolution: {integrity: sha512-YstAqNb0MCN8PjdLCDfRsBcGVRN41f3vgLvaI0IrIcBp4AqILRSS0DeWNGkicC+f/zRIPJLc+9RURVSepwvfBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@choojs/findup/-/findup-0.2.1.tgz}
@@ -4083,31 +4081,14 @@ packages:
     version: 0.12.0
     dev: true
 
-  registry.npmmirror.com/cesium/1.99.0:
-    resolution: {integrity: sha512-bVN7Bskd9PVhQe9Ak9DEr7wEckbCJc0UPq58MKWGWAkQfiYob8odh6luqY5Yz26trr3tWwni1xWjsCe94y37jw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cesium/-/cesium-1.99.0.tgz}
+  registry.npmmirror.com/cesium/1.100.0:
+    resolution: {integrity: sha512-f9pBg6DBY4LoRzpOLPhtmUAi0V7FJVrI/fXYLFri3xtK/aEwwmY/+slH82sOXx7Ynt3PRVCsM/4L/Xe/x5Asvg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cesium/-/cesium-1.100.0.tgz}
     name: cesium
-    version: 1.99.0
+    version: 1.100.0
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@tweenjs/tween.js': registry.npmmirror.com/@tweenjs/tween.js/18.6.4
-      '@zip.js/zip.js': registry.npmmirror.com/@zip.js/zip.js/2.4.26
-      autolinker: registry.npmmirror.com/autolinker/3.16.2
-      bitmap-sdf: registry.npmmirror.com/bitmap-sdf/1.0.4
-      dompurify: registry.npmmirror.com/dompurify/2.4.1
-      earcut: registry.npmmirror.com/earcut/2.2.4
-      grapheme-splitter: registry.npmmirror.com/grapheme-splitter/1.0.4
-      jsep: registry.npmmirror.com/jsep/0.3.5
-      kdbush: registry.npmmirror.com/kdbush/3.0.0
-      ktx-parse: registry.npmmirror.com/ktx-parse/0.4.5
-      lerc: registry.npmmirror.com/lerc/2.0.0
-      mersenne-twister: registry.npmmirror.com/mersenne-twister/1.1.0
-      meshoptimizer: registry.npmmirror.com/meshoptimizer/0.18.1
-      nosleep.js: registry.npmmirror.com/nosleep.js/0.12.0
-      pako: registry.npmmirror.com/pako/2.1.0
-      protobufjs: registry.npmmirror.com/protobufjs/7.1.2
-      rbush: registry.npmmirror.com/rbush/3.0.1
-      topojson-client: registry.npmmirror.com/topojson-client/3.1.0
-      urijs: registry.npmmirror.com/urijs/1.19.11
+      '@cesium/engine': registry.npmmirror.com/@cesium/engine/1.0.0
+      '@cesium/widgets': registry.npmmirror.com/@cesium/widgets/1.0.0
     dev: false
 
   registry.npmmirror.com/chalk/1.1.3:

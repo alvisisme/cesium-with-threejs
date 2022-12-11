@@ -21,7 +21,7 @@ import {
   Math as CesiumMath,
   TileMapServiceImageryProvider as CesiumTileMapServiceImageryProvider,
   buildModuleUrl as CesiumBuildModuleUrl
-} from '@/thirdparty/Cesium/Cesium.js'
+} from 'cesium'
 
 // 使用到的 ThreeJs模块
 import {

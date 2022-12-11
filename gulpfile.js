@@ -9,12 +9,6 @@ gulp.task('postInstall', function () {
 
   var webSiteLibs = [
     {
-      name: 'Cesium',
-      glob: [
-        'node_modules/cesium/Source/**'
-      ],
-      subDir: true
-    }, {
       name: 'Three',
       glob: [
         'node_modules/three/src/**'

@@ -11,6 +11,9 @@ const CesiumSource = path.join('node_modules', 'cesium', 'Build', 'Cesium')
 
 const config = {
   publicPath: './',
+  transpileDependencies: [
+    '@cesium/engine'
+  ],
   configureWebpack: {
     plugins: [
       new CopyWebpackPlugin([{ from: path.join(CesiumSource, 'Assets'), to: 'Assets' }]),
